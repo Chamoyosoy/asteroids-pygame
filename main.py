@@ -1,4 +1,5 @@
 import pygame
+import sys
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
 from asteroid import Asteroid
@@ -43,6 +44,12 @@ def main():
         # draw every object on the group
         for i in drawable:
             i.draw(screen)
+
+        for aste in asteroids:
+            collide = aste.collide(player)
+            if collide:
+                sys.exit("game over")
+            
 
         # Update the screen
         pygame.display.flip()
